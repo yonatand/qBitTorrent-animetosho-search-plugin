@@ -46,7 +46,7 @@ class animetosho(object):
             current_result["size"] = str(result["size_bytes"]) + " B"
             current_result["seeds"] = result["seeders"]
             current_result["leech"] = result["leechers"]
-            current_result["desc_link"] = "https://animetosho.xyz/view/" + result["id"]
+            current_result["desc_link"] = "https://animetosho.xyz/view/" + str(result["id"])
 
             prettyPrinter(current_result)
 
