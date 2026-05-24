@@ -35,17 +35,18 @@ class animetosho(object):
         print(download_file(info))
 
     def search(self, what, cat='all'):
-        url = f"https://feed.animetosho.xyz/json?q={what}"
-        link = json.loads(retrieve_url(url))
+        url = f"https://feed.animetosho.xyz/json/v1/search?q={what}"
+        _link = json.loads(retrieve_url(url))
+        link = _link["data"]
 
         for result in link:
             current_result = {"engine_url": "https://animetosho.xyz/"}
-            current_result["link"] = result["magnet_uri"]
+            current_result["link"] = result["magnet"]
             current_result["name"] = result["title"]
-            current_result["size"] = str(result["total_size"]) + " B"
+            current_result["size"] = str(result["size_bytes"]) + " B"
             current_result["seeds"] = result["seeders"]
             current_result["leech"] = result["leechers"]
-            current_result["desc_link"] = result["link"]
+            current_result["desc_link"] = "https://animetosho.xyz/view/" + result["id"]
 
             prettyPrinter(current_result)
 
