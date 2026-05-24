@@ -1,4 +1,4 @@
-# VERSION: 1.00
+# VERSION: 1.01
 # AUTHORS: ALAA_BRAHIM
 # LICENSING INFORMATION
 
@@ -21,7 +21,7 @@ import json
 
 
 class animetosho(object):
-    url = "https://animetosho.org"
+    url = "https://animetosho.xyz"
     name = "Anime Tosho"
     supported_categories = {
         "all": "all",
@@ -35,11 +35,11 @@ class animetosho(object):
         print(download_file(info))
 
     def search(self, what, cat='all'):
-        url = f"https://feed.animetosho.org/json?q={what}"
+        url = f"https://feed.animetosho.xyz/json?q={what}"
         link = json.loads(retrieve_url(url))
 
         for result in link:
-            current_result = {"engine_url": "https://animetosho.org/"}
+            current_result = {"engine_url": "https://animetosho.xyz/"}
             current_result["link"] = result["magnet_uri"]
             current_result["name"] = result["title"]
             current_result["size"] = str(result["total_size"]) + " B"
